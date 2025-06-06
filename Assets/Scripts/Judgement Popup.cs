@@ -13,8 +13,6 @@ public class JudgementPopup : MonoBehaviour
     public void Setup(string message, Color color)
     {
         text.text = message;
-        Color solidColor = color;
-        solidColor.a = 1f;
         text.color = color;
         canvasGroup.alpha = 1f;
         startPos = transform.position;
@@ -27,7 +25,8 @@ public class JudgementPopup : MonoBehaviour
         while (timer < fadeDuration)
         {
             float t = timer / fadeDuration;
-            transform.position = startPos + Vector3.up * floatDistance * t;
+            float easeT = 1f - Mathf.Pow(1f - t, 2);
+            transform.position = startPos + Vector3.up * floatDistance * easeT;
             canvasGroup.alpha = 1f - t;
             timer += Time.unscaledDeltaTime;
             yield return null;

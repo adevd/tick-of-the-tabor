@@ -273,6 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 112099338}
   - component: {fileID: 112099339}
+  - component: {fileID: 112099340}
   m_Layer: 5
   m_Name: BPM UI Controller
   m_TagString: Untagged
@@ -314,6 +315,45 @@ MonoBehaviour:
   conductor: {fileID: 465361153}
   bpmSlider: {fileID: 996205285}
   bpmText: {fileID: 657099760}
+--- !u!114 &112099340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112099337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9b3dd49a2db456b9d6c936bd8701fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulseTarget: {fileID: 1871274807}
+  pulseScale: {x: 1.3, y: 1.3, z: 1}
+  pulseDuration: 0.15
+  pulseCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,8 +1149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conductor: {fileID: 465361153}
-  perfectThreshold: 0.05
+  perfectThreshold: 0.06
   goodThreshold: 0.12
+  popupPrefab: {fileID: 15727412023514436, guid: 89724304f739749a2b101efc3fcdd096, type: 3}
+  popupSpawnPoint: {fileID: 411207744}
 --- !u!4 &800212407
 Transform:
   m_ObjectHideFlags: 0
@@ -1386,6 +1428,8 @@ GameObject:
   - component: {fileID: 1027583121}
   - component: {fileID: 1027583120}
   - component: {fileID: 1027583119}
+  - component: {fileID: 1027583124}
+  - component: {fileID: 1027583123}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1485,6 +1529,41 @@ Transform:
   - {fileID: 397936987}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1027583123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027583118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8fb854ac3b9e45688cf4793ac884f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1027583124}
+--- !u!95 &1027583124
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027583118}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c437215cebf50476b938e8bd21dc22d9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1609792355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,7 +1812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.20278569, g: 0.46226418, b: 0.2500462, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
