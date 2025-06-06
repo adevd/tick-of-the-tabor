@@ -35,9 +35,9 @@ public class BPMConductor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        songPosition += Time.deltaTime;
+        songPosition += Time.unscaledDeltaTime;
 
-        if (Time.time >= nextBeatTime)
+        if (Time.unscaledTime >= nextBeatTime)
         {
             if (printBeats)
             {
@@ -49,7 +49,7 @@ public class BPMConductor : MonoBehaviour
         }
     }
 
-    public float GetTimeSinceLastBeat() => Time.time - (nextBeatTime - beatInterval);
-    public float GetTimeToNextBeat() => nextBeatTime - Time.time;
+    public float GetTimeSinceLastBeat() => Time.unscaledTime - (nextBeatTime - beatInterval);
+    public float GetTimeToNextBeat() => nextBeatTime - Time.unscaledTime;
     public float GetBeatProgress() => GetTimeSinceLastBeat() / beatInterval;
 }
