@@ -38,29 +38,29 @@ public class RhythmJudge : MonoBehaviour
         if (offset <= perfectThreshold)
         {
             string perfectMessage = "🌞 Perfect!";
-            ShowPopup(perfectMessage, Color.green);
+            ShowPopup(GenerateJudgement(perfectMessage, offset), Color.green);
         }
         else if (offset <= goodThreshold)
         {
             string goodMessage = "👌 Good!";
-            ShowPopup(goodMessage, Color.blue);
+            ShowPopup(GenerateJudgement(goodMessage, offset), Color.blue);
         }
         else
         {
             string fineMessage = "🌱 Nice Try!";
-            ShowPopup(fineMessage, Color.magenta);
+            ShowPopup(GenerateJudgement(fineMessage, offset), Color.magenta);
         }
     }
 
     private string GenerateJudgement(string comment, float offset)
     {
-        return $"{comment} Offset: {offset:F3}s";
+        return $"{comment} \nOffset: {offset:F3}s";
     }
 
     private void ShowPopup(string text, Color color)
     {
         var popup = Instantiate(popupPrefab, popupSpawnPoint);
-        popup.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -100f);
+        popup.GetComponent<RectTransform>().anchoredPosition = new Vector2(500f, -200f);
         popup.GetComponent<JudgementPopup>().Setup(text, color);
     }
 }
