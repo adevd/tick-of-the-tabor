@@ -1,0 +1,65 @@
+# ========== Unity ==========
+
+# Ignore system-generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# Ignore auto-generated settings
+UserSettings/
+*.pidb
+*.booproj
+*.svd
+*.userprefs
+
+# Ignore crash logs
+sysinfo.txt
+
+# Ignore Unity cache server and cache files
+*.cache
+*.bak
+
+# Ignore Rider and JetBrains
+.idea/
+*.sln.iml
+
+# Ignore Visual Studio Code / C# IDE files
+.vs/
+.vscode/
+*.csproj
+*.sln
+*.user
+*.suo
+
+# ========== Git ==========
+
+# Ignore entire Packages folder...
+Packages/
+
+# ...but allow in the critical files that define dependencies
+!Packages/manifest.json
+!Packages/packages-lock.json
+
+# Track only what's useful from Assets
+!Assets/
+!Assets/**
+
+# Always include ProjectSettings
+!ProjectSettings/
+
+# ========== OS / Misc ==========
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Build outputs
+Build/
+Builds/
