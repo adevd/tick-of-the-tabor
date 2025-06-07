@@ -52,4 +52,6 @@ public class BPMConductor : MonoBehaviour
     public float GetTimeSinceLastBeat() => Time.unscaledTime - (nextBeatTime - beatInterval);
     public float GetTimeToNextBeat() => nextBeatTime - Time.unscaledTime;
     public float GetBeatProgress() => GetTimeSinceLastBeat() / beatInterval;
+
+    public float GetPreviousBeatTime() => nextBeatTime - beatInterval;
 }

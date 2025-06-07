@@ -13,6 +13,9 @@ public class RhythmJudge : MonoBehaviour
 
     private InputAction jumpAction;
     private InputSystem_Actions inputActions;
+    private static readonly Color perfectColour = Hex("#488B49");
+    private static readonly Color goodColour = Hex("#476C9B");
+    private static readonly Color fineColour = Hex("#8E8E8E");
 
     private void OnEnable()
     {
@@ -32,29 +35,44 @@ public class RhythmJudge : MonoBehaviour
     private void OnJumpJudgeBeatTiming(InputAction.CallbackContext ctx)
     {
         float inputTime = (float)ctx.time;
-        float beatTime = Time.unscaledTime - conductor.GetTimeSinceLastBeat();
-        float offset = Mathf.Abs(inputTime - beatTime);
+        float interval = 60f / conductor.BPM;
 
-        if (offset <= perfectThreshold)
+        float previousBeatTime = conductor.GetPreviousBeatTime();
+        float nextBeatTime = previousBeatTime + interval;
+
+        float offsetToPreviousBeat = Mathf.Abs(inputTime - previousBeatTime);
+        float offsetToNextBeat = Mathf.Abs(inputTime - nextBeatTime);
+
+        bool closerToPrevious = offsetToPreviousBeat <= offsetToNextBeat;
+        float closestOffset = closerToPrevious ? offsetToPreviousBeat : offsetToNextBeat;
+        string direction = closerToPrevious ? "Dragging" : "Rushing";
+
+        string judgement;
+        Color color;
+
+        if (closestOffset <= perfectThreshold)
         {
-            string perfectMessage = "🌞 Perfect!";
-            ShowPopup(GenerateJudgement(perfectMessage, offset), Color.green);
+            judgement = $"🌞 Perfect!";
+            color = perfectColour;
+
         }
-        else if (offset <= goodThreshold)
+        else if (closestOffset <= goodThreshold)
         {
-            string goodMessage = "👌 Good!";
-            ShowPopup(GenerateJudgement(goodMessage, offset), Color.blue);
+            judgement = "👌 Good!";
+            color = goodColour;
         }
         else
         {
-            string fineMessage = "🌱 Nice Try!";
-            ShowPopup(GenerateJudgement(fineMessage, offset), Color.magenta);
+            judgement = "🌱 Nice Try!";
+            color = fineColour;
         }
+        ShowPopup(GenerateJudgement(judgement, closestOffset, direction), color);
+
     }
 
-    private string GenerateJudgement(string comment, float offset)
+    private string GenerateJudgement(string comment, float offset, string direction)
     {
-        return $"{comment} \nOffset: {offset:F3}s";
+        return $"{comment} \n{direction}: {offset:F3}s";
     }
 
     private void ShowPopup(string text, Color color)
@@ -63,4 +81,12 @@ public class RhythmJudge : MonoBehaviour
         popup.GetComponent<RectTransform>().anchoredPosition = new Vector2(500f, -200f);
         popup.GetComponent<JudgementPopup>().Setup(text, color);
     }
+
+    private static Color Hex(string hex)
+    {
+        Color color;
+        ColorUtility.TryParseHtmlString(hex, out color);
+        return color;
+    }
+
 }
