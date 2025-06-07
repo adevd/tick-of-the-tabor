@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8278021462801546807}
   - component: {fileID: 7146819278673099920}
+  - component: {fileID: 8782884482975782037}
   - component: {fileID: 4802094386354786499}
   - component: {fileID: 5474210762045466108}
-  - component: {fileID: 8782884482975782037}
   m_Layer: 5
   m_Name: Judgement Popup
   m_TagString: Untagged
@@ -47,6 +47,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15727412023514436}
   m_CullTransparentMesh: 1
+--- !u!114 &8782884482975782037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15727412023514436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1fb376fd1b84a758fba323c1ede368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 4802094386354786499}
+  canvasGroup: {fileID: 5474210762045466108}
+  fadeDuration: 2
+  floatDistance: 200
 --- !u!114 &4802094386354786499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,19 +166,3 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &8782884482975782037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 15727412023514436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f1fb376fd1b84a758fba323c1ede368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 4802094386354786499}
-  canvasGroup: {fileID: 5474210762045466108}
-  fadeDuration: 1
-  floatDistance: 200
