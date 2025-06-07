@@ -1149,8 +1149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conductor: {fileID: 465361153}
-  perfectThreshold: 0.06
-  goodThreshold: 0.12
+  perfectThreshold: 0.075
+  goodThreshold: 0.15
   popupPrefab: {fileID: 15727412023514436, guid: 89724304f739749a2b101efc3fcdd096, type: 3}
   popupSpawnPoint: {fileID: 411207744}
 --- !u!4 &800212407
@@ -1483,7 +1483,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c51ec9a0f902a414cab6d2c167920d7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
